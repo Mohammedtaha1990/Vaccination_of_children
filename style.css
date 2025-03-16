@@ -1,0 +1,325 @@
+/* إعادة ضبط القيم الافتراضية */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ضبط الصفحة لتمتد بالكامل بدون أي فراغات */
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #f4f4f9;
+    direction: rtl;
+}
+
+/* الحاوية الرئيسية */
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* تنسيق العنوان والرسالة الترحيبية */
+.header {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* الأزرار */
+button, .btn {
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    width: auto;
+    max-width: 150px;
+    margin: 10px auto;
+    display: block;
+}
+
+button:hover, .btn:hover {
+    background-color: #218838;
+}
+
+.btn.secondary {
+    background-color: #6c757d;
+}
+
+.btn.secondary:hover {
+    background-color: #5a6268;
+}
+
+/* تثبيت الفوتر في الأسفل */
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    position: absolute;
+    bottom: 0;
+}
+
+/* مربعات البحث والإدخال */
+#searchInput, #ageInput {
+    width: 100%;
+    max-width: 600px;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    font-size: 16px;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#searchInput:focus, #ageInput:focus {
+    border-color: #28a745;
+}
+
+/* نتائج البحث */
+#searchResults {
+    flex: 1;
+    max-width: 800px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.child-result {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* استمارة إدخال بيانات الطفل */
+.child-data-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+/* الحقول */
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: right;
+    display: block;
+}
+
+/* تنظيم الحقول */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group.row {
+    display: flex;
+    gap: 10px;
+}
+
+.form-group.row .input-field {
+    flex: 1;
+}
+
+/* الحاوية الرئيسية لمعلومات التطعيم */
+.vaccination-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 15px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.vaccine-box {
+    background-color: #e0e0e0;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.vaccine-box.selected {
+    background-color: #003366;
+    color: white;
+}
+
+/* أنماط الجرعات */
+.dose-box {
+    padding: 5px;
+    margin: 3px;
+    background-color: #99ccff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dose-box:hover {
+    background-color: #66b3ff;
+}
+
+.selected-dose {
+    background-color: #66b3ff !important;
+}
+
+/* ملخص التطعيم */
+#summary {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    width: 100%;
+}
+
+/* أنماط الصفحات العامة */
+.main-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* العناوين */
+.page-title {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.2rem;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.page-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 3px;
+    background: #28a745;
+}
+
+/* تجاوُب مع الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .main-container {
+        width: 95%;
+        padding: 1rem;
+    }
+
+    .page-title {
+        font-size: 1.8rem;
+    }
+
+    .info-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .info-value {
+        margin-top: 0.5rem;
+    }
+}
+
+/* تعديل التنسيق لصفحة عمر الطفل */
+#ageInput {
+    width: 100%;
+    max-width: 600px;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    font-size: 16px;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.3s ease;
+    margin-top: 20px; /* رفع الحقل إلى أعلى */
+}
+
+#ageInput:focus {
+    border-color: #28a745;
+}
+
+/* تنسيق نتائج البحث لعمر الطفل */
+#ageResults {
+    flex: 1;
+    max-width: 800px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+/* رفع العنوان والحقول وزر "التالي" */
+#age-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 0; /* رفع العنصر */
+}
+
+/* تنسيق زر التالي في صفحة عمر الطفل */
+#nextButton {
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    width: auto;
+    margin-top: 20px;
+}
+
+#nextButton:hover {
+    background-color: #218838;
+}

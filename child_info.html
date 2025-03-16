@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل بيانات الطفل</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group.row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .input-field {
+            flex: 1;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>تسجيل بيانات الطفل</h1>
+        <form id="childForm">
+            <!-- معلومات الطفل الأساسية -->
+            <div class="form-group">
+                <label for="name">الاسم الرباعي:</label>
+                <input type="text" id="name" class="input-field" required>
+            </div>
+
+            <div class="form-group row">
+                <div class="input-field">
+                    <label for="birthDate">تاريخ الميلاد:</label>
+                    <input type="date" id="birthDate" required>
+                </div>
+                <div class="input-field">
+                    <label for="birthplace">مكان الميلاد:</label>
+                    <input type="text" id="birthplace" required>
+                </div>
+            </div>
+
+            <!-- معلومات الموقع -->
+            <div class="form-group row">
+                <div class="input-field">
+                    <label for="governorate">المحافظة:</label>
+                    <select id="governorate" required>
+                        <option value="">اختر المحافظة</option>
+                        <option value="صنعاء">صنعاء</option>
+                        <option value="عدن">عدن</option>
+                        <option value="تعز">تعز</option>
+                        <option value="لحج">لحج</option>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <label for="directorate">المديرية:</label>
+                    <select id="directorate" required>
+                        <option value="">اختر المديرية</option>
+                        <option value="المقاطرة">المقاطرة</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="input-field">
+                    <label for="healthFacility">المرفق الصحي:</label>
+                    <select id="healthFacility" required>
+                        <option value="">اختر المرفق الصحي</option>
+                        <option value="مستشفى صنعاء">مستشفى صنعاء</option>
+                        <option value="مستشفى عدن">مستشفى عدن</option>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <label for="village">الحي/القرية:</label>
+                    <select id="village" required>
+                        <option value="">اختر الحي/القرية</option>
+                        <option value="المحلة">المحلة</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- معلومات الإصدار -->
+            <div class="form-group">
+                <label for="issueDate">تاريخ الإصدار:</label>
+                <input type="date" id="issueDate" class="input-field" required>
+            </div>
+
+            <div class="form-group row">
+                <div class="input-field">
+                    <label for="pageNumber">رقم الصفحة:</label>
+                    <input type="number" id="pageNumber" required>
+                </div>
+                <div class="input-field">
+                    <label for="cardNumber">رقم البطاقة:</label>
+                    <input type="number" id="cardNumber" required>
+                </div>
+            </div>
+
+            <!-- أزرار التحكم -->
+            <div class="button-container">
+                <button type="submit" class="btn">حفظ بيانات الطفل</button>
+                <button type="button" id="nextButton" class="btn" 
+                        onclick="handleNext()" 
+                        style="display: none;">التالي</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('childForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            saveChild();
+        });
+
+        function saveChild() {
+            const child = {
+                name: document.getElementById('name').value,
+                birthDate: document.getElementById('birthDate').value,
+                birthplace: document.getElementById('birthplace').value,
+                governorate: document.getElementById('governorate').value,
+                directorate: document.getElementById('directorate').value,
+                healthFacility: document.getElementById('healthFacility').value,
+                village: document.getElementById('village').value,
+                issueDate: document.getElementById('issueDate').value,
+                pageNumber: document.getElementById('pageNumber').value,
+                cardNumber: document.getElementById('cardNumber').value
+            };
+
+            const children = JSON.parse(localStorage.getItem('children')) || [];
+            children.push(child);
+            localStorage.setItem('children', JSON.stringify(children));
+
+            alert('تم حفظ بيانات الطفل بنجاح!');
+            document.getElementById('nextButton').style.display = 'block';
+        }
+
+        function handleNext() {
+            // الانتقال مباشرة دون أي عمليات إضافية
+            window.location.href = 'vaccination_info.html';
+        }
+    </script>
+</body>
+</html>

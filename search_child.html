@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بحث عن طفل</title>
+    <link rel="stylesheet" href="style.css"> <!-- ربط ملف CSS -->
+    <style>
+        /* تنسيقات إضافية */
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #28a745; /* لون أخضر */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 10px;
+        }
+
+        .btn:hover {
+            background-color: #218838; /* لون أخضر غامق عند التمرير */
+        }
+
+        .child-result {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-align: right;
+            cursor: pointer; /* تغيير المؤشر إلى شكل يد */
+        }
+
+        .child-result:hover {
+            background-color: #e0e0e0; /* تغيير لون الخلفية عند التمرير */
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 300px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>بحث عن طفل</h1>
+        
+        <!-- مربع البحث -->
+        <input type="text" id="searchInput" placeholder="ادخل اسم الطفل أو جزء منه">
+        <button onclick="searchChild()" class="btn">بحث</button>
+        
+        <!-- عرض نتائج البحث -->
+        <div id="searchResults"></div>
+
+        <!-- زر التالي -->
+        <button id="nextButton" class="btn" style="display: none;" onclick="goToChildAge()">التالي</button>
+    </div>
+
+    <script>
+        // دالة للبحث عن طفل
+        function searchChild() {
+            const searchInput = document.getElementById('searchInput').value.trim().toLowerCase(); // التأكد من أن البحث غير فارغ وتحويله إلى أحرف صغيرة
+            const children = JSON.parse(localStorage.getItem('children')) || [];
+
+            // البحث عن الطفل باستخدام الاسم
+            const results = children.filter(child => {
+                if (child && child.name) { // التأكد من أن child و child.name موجودان
+                    return child.name.toLowerCase().includes(searchInput);
+                }
+                return false; // إذا كان child غير معرّف، نعود بـ false
+            });
+
+            displayResults(results); // عرض النتائج
+        }
+
+        // دالة لعرض نتائج البحث
+        function displayResults(results) {
+            const resultsDiv = document.getElementById('searchResults');
+            resultsDiv.innerHTML = ""; // مسح النتائج السابقة
+
+            if (results.length === 0) {
+                resultsDiv.innerHTML = "<p>لا توجد نتائج</p>";
+                document.getElementById('nextButton').style.display = "none"; // إخفاء زر التالي إذا لم تكن هناك نتائج
+                return;
+            }
+
+            results.forEach(child => {
+                const childDiv = document.createElement("div");
+                childDiv.className = "child-result";
+                childDiv.innerHTML = `
+                    <p><strong>الاسم:</strong> ${child.name}</p>
+                    <p><strong>تاريخ الميلاد:</strong> ${child.birthDate}</p>
+                    <p><strong>مكان الميلاد:</strong> ${child.birthplace}</p>
+                `;
+
+                // إضافة حدث النقر لاختيار النتيجة
+                childDiv.addEventListener('click', () => {
+                    document.getElementById('searchInput').value = child.name; // تعبئة خانة البحث بالاسم المحدد
+                    document.getElementById('nextButton').style.display = "block"; // إظهار زر التالي
+                });
+
+                resultsDiv.appendChild(childDiv);
+            });
+
+            document.getElementById('nextButton').style.display = "block"; // إظهار زر التالي عند وجود نتائج
+        }
+
+        // دالة الانتقال إلى صفحة عمر الطفل
+        function goToChildAge() {
+            const searchInput = document.getElementById('searchInput').value.trim();
+            if (searchInput) {
+                // تخزين اسم الطفل في localStorage للوصول إليه في صفحة child_age.html
+                localStorage.setItem('selectedChildName', searchInput);
+                window.location.href = 'child_age.html';
+            } else {
+                alert("الرجاء إدخال اسم الطفل أولاً.");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.">
+    <title>تسجيل بيانات الطفل</title>
+    <link rel="stylesheet" href="style.css"> <!-- ربط ملف CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%; /* تأكد من أن الصفحة تستخدم كامل المساحة العمودية */
+            width: 100%;  /* تأكد من أن الصفحة تستخدم كامل المساحة الأفقية */
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* توسيط المحتوى عموديًا */
+            align-items: center;
+            background-color: #f8f9fa;
+        }
+
+        h1 {
+            font-size: 2.64em; /* تكبير بنسبة 120% */
+            color: #2c3e50;
+            margin-top: -200px; /* رفع العنوان بشكل أكبر */
+        }
+
+        /* تعليمات أسفل العنوان */
+        .instructions {
+            font-size: 1em;
+            color: #555;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* تنسيق الأزرار */
+        .controls {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 40px 80px; /* تكبير الأزرار */
+            font-size: 2.4em; /* تكبير الخط داخل الأزرار */
+            background-color: #28a745; /* لون أخضر */
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 10px;
+            display: block;
+            width: auto;
+            max-width: 250px;
+        }
+
+        .btn:hover {
+            background-color: #218838; /* لون أخضر غامق عند التمرير */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>تسجيل بيانات الطفل</h1>
+
+        <!-- تعليمات أسفل العنوان -->
+        <p class="instructions">
+            يرجى اختيار أحد الخيارين: "جديد" لتسجيل طفل جديد أو "متردد" للبحث عن طفل موجود مسبقًا.
+        </p>
+
+        <!-- أزرار التحكم -->
+        <div class="controls">
+            <button onclick="window.location.href='child_info.html'" class="btn">جديد</button>
+            <button onclick="window.location.href='search_child.html'" class="btn">متردد</button>
+        </div>
+    </div>
+</body>
+</html>

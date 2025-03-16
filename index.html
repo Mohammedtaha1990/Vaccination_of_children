@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تطبيق تطعيم الأطفال</title>
+    <link rel="stylesheet" href="style.css"> <!-- ربط ملف CSS -->
+    <style>
+        /* تنسيقات إضافية */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* توسيط المحتوى عموديًا */
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.64em; /* تكبير بنسبة 120% */
+            color: #2c3e50;
+            margin-top: -150px; /* رفع العنوان بشكل أكبر */
+        }
+
+        /* تنسيق الوصف */
+        .description {
+            font-size: 1.2em; /* أصغر من العنوان */
+            color: #555;
+            margin-top: 0px; /* رفع الوصف ليكون تحت العنوان */
+            margin-bottom: 40px;
+            max-width: 80%;
+            text-align: center;
+        }
+
+        /* تنسيق زر الدخول */
+        .btn {
+            padding: 5px 80px;
+            font-size: 3em; /* تكبير حجم زر الدخول وكلمة "دخول" ثلاث مرات */
+            background-color: #28a745; /* لون أخضر */
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: block;
+            width: auto;
+            max-width: 250px;
+            margin: 0 auto 50px;
+        }
+
+        .btn:hover {
+            background-color: #218838; /* لون أخضر غامق عند التمرير */
+        }
+
+        /* تنسيق النص أسفل زر الدخول */
+        .credits {
+            font-size: 1.2em; /* تصغير حجم الخط إلى نصف حجمه الحالي */
+            color: #333;
+            margin-top: 40px; /* رفع العبارة للأسفل قليلاً */
+            text-align: center;
+        }
+
+        /* تنسيق الذيل (Footer) */
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>مرحباً في تطبيق تطعيم الأطفال</h1>
+    
+    <!-- وصف التطبيق -->
+    <p class="description">
+        يهدف هذا التطبيق إلى تسهيل تسجيل بيانات الأطفال وجدولة التطعيمات الخاصة بهم لضمان متابعة دقيقة لمراحل التطعيم المختلفة.
+    </p>
+    
+    <!-- زر الدخول -->
+    <button onclick="window.location.href='child_registration.html'" class="btn">دخول</button>
+    
+    <!-- النص أسفل زر الدخول -->
+    <div class="credits">
+        <p>تطوير الدكتور/ محـمـــد طــــه ياســــين</p>
+        <p>إشراف الدكتور/ سمير عبدالله المقطـــري</p>
+    </div>
+
+    <!-- الذيل (Footer) -->
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2025</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بيانات التطعيم</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>بيانات التطعيم</h1>
+
+    <div class="vaccination-container">
+        <div class="vaccine-box" onclick="toggleDoses(this)">السل<div class="dose-container"></div></div>
+        <div class="vaccine-box" onclick="toggleDoses(this)">الكبد ب<div class="dose-container"></div></div>
+        <div class="vaccine-box" onclick="toggleDoses(this)">الشلل الفموي<div class="dose-container"></div></div>
+        <div class="vaccine-box" onclick="toggleDoses(this)">شلل حقن<div class="dose-container"></div></div>
+        <div class="vaccine-box" onclick="toggleDoses(this)">الخماسي<div class="dose-container"></div></div>
+        <div class="vaccine-box" onclick="toggleDoses(this)">المكورات الرئوية<div class="dose-container"></div></div>
+        <div class="vaccine-box" onclick="toggleDoses(this)">الروتا<div class="dose-container"></div></div>
+        <div class="vaccine-box" onclick="toggleDoses(this)">الحصبة والحصبة الألمانية<div class="dose-container"></div></div>
+        <div class="vaccine-box" onclick="toggleDoses(this)">فيتامين أ<div class="dose-container"></div></div>
+    </div>
+
+    <button onclick="showSummary()">عرض الملخص</button>
+    <button onclick="resetSelections()">إعادة التعيين</button>
+    <button onclick="saveData()">حفظ بيانات التطعيم</button>
+
+    <div id="summary" style="display:none;"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

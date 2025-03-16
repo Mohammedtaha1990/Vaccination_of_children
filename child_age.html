@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عمر الطفل</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* إزالة الفراغات حول الصفحة */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: #fff;
+            padding-top: 20px;
+        }
+
+        h1 {
+            font-size: 32px; /* ضعف الحجم الحالي */
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .info-box {
+            width: 80%;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            text-align: center;
+        }
+
+        .info-box p {
+            font-size: 20px; /* ضعف الحجم الحالي */
+        }
+
+        .btn {
+            padding: 12px 24px;
+            font-size: 32px; /* ضعف الحجم الحالي */
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>عمر الطفل</h1>
+        
+        <div class="info-box">
+            <p id="childName"></p>
+        </div>
+        
+        <div class="info-box">
+            <p id="childAge"></p>
+        </div>
+        
+        <div class="info-box">
+            <p id="vaccineType"></p>
+        </div>
+        
+        <button class="btn" onclick="goToNextPage()">التالي</button>
+    </div>
+
+    <script>
+        function displayChildInfo() {
+            const childData = JSON.parse(localStorage.getItem('selectedChild')) || {};
+            
+            if (!childData.name || !childData.birthDate) {
+                alert("⚠️ لم يتم العثور على بيانات الطفل");
+                window.location.href = 'search_child.html';
+                return;
+            }
+
+            // عرض البيانات
+            document.getElementById('childName').textContent = `الاسم: ${childData.name}`;
+            
+            const birthDate = new Date(childData.birthDate);
+            const today = new Date();
+            const ageInDays = Math.floor((today - birthDate) / (1000 * 60 * 60 * 24));
+            
+            document.getElementById('childAge').textContent = `العمر بالأيام: ${ageInDays}`;
+            document.getElementById('vaccineType').textContent = `نوع التطعيم: ${ageInDays <= 365 ? "أقل من عام" : "أكبر من عام"}`;
+        }
+
+        function goToNextPage() {
+            window.location.href = 'vaccination_info.html';
+        }
+
+        window.onload = () => {
+            const selectedChildName = localStorage.getItem('selectedChildName');
+            const children = JSON.parse(localStorage.getItem('children')) || [];
+            const selectedChild = children.find(child => child.name === selectedChildName);
+            
+            if (selectedChild) {
+                localStorage.setItem('selectedChild', JSON.stringify(selectedChild));
+            }
+            
+            displayChildInfo();
+        };
+    </script>
+</body>
+</html>
